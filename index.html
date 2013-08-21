@@ -158,8 +158,46 @@
     
     <section class="slide">
         <h2>Sample Gruntfile.js</h2>
-<pre class="prettyprint">
-</pre>
+<pre class="prettyprint">module.exports = function( grunt ){
+ 
+    var sourceFiles = [ 's-code.js', 's-code-page.js'];
+ 
+    grunt.initConfig({
+        pkg : grunt.file.readJSON( 'package.json' ),
+ 
+        uglify : {
+            all : {
+                files : {
+                    's-code.min.<%= pkg.version %>.js' : sourceFiles
+                }
+            }
+        },
+        jasmine : {
+            unmodified : {
+                src : sourceFiles,
+                options : {
+                    specs : [ '**test/spec/*.js' ]
+                }
+            },
+            min : {
+                src : [ 's-code.min.<% pkg.version %>.js' ],
+                options : {
+                    specs : [ '**test/spec/*.js' ]
+                }
+            }
+        },
+        clean : {
+            build : {
+                src : [ 's-code.min**.js' ]
+            }
+        }
+    });
+ 
+    //dynamically load tasks
+    require( 'matchdep' ).filterDev( 'grunt-*' ).forEach( grunt.loadNpmTasks );
+ 
+    grunt.registerTask( 'default', ['jasmine:unmodified:build', 'clean', 'uglify', 'jasmine:min:build']);
+};</pre>
     </section>
     
     <section class="slide">
