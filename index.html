@@ -380,12 +380,37 @@
 
   <section class="slide">
     <h2>Custom Target Examples</h2>
-    <p>Don't run all tasks for <code>grunt</code> with no targets</p>
-    <pre class="prettyprint">grunt.registerTask('default',['handlebars','concat','uglify']);</pre> 
+    <p>When the<code>grunt</code> is with no tasks, only run specific tasks:</p>
+    <pre class="prettyprint">grunt.registerTask('default',['jasmine','concat','uglify']);</pre> 
   </section>
 
   <section class="slide">
-    <h2>Passing options into the grunt command</h2>
+    <h2>Custom Target Examples</h2>
+    <p>Only run <code>grunt</code> <code>:prod</code>targets:</p>
+    <pre class="prettyprint">grunt.registerTask('default',['jasmine:prod','concat:prod','uglify:prod']);</pre> 
+  </section>
+
+  <section class="slide">
+    <h2>Passing options into grunt</h2>
+    <p>Lets say we wanted to be able to dynamically pass an environment target into the last example.  We can do that with command line arguments.</p>
+<pre class="prettyprint">var env = grunt.option( 'env' );
+var tasks = [ 'jasmine', 'concat', 'uglify' ];
+
+grunt.registerTask('default', tasks.map( function( task ){ return task + ':' + env; } ) );
+</pre>
+
+<pre class="prettyprint">grunt --env=prod</pre>
+  </section>
+
+  <section class="slide">
+    <h2>Other Tips &amp; Tricks</h2>
+    <ul>
+      <li>It's just JavaScript! Use variables &amp; functions to DRY</li>
+      <li>Dynamically load plugins
+        <div><code class="prettyprint">require( 'matchdep' ).filterDev( 'grunt-*' ).forEach( grunt.loadNpmTasks );</code></div>
+      </li>
+      <li>Read &amp; re-read the 'Configuring Tasks' section of the Grunt website</li>
+      </ul>
   </section>
 
   <section class="slide">
