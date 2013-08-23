@@ -17,10 +17,10 @@
   <link rel="stylesheet" href="extensions/status/deck.status.css">
   <link rel="stylesheet" href="extensions/hash/deck.hash.css">
   <link rel="stylesheet" href="extensions/scale/deck.scale.css">
-	<link href="google-code-prettify/src/prettify.css" type="text/css" rel="stylesheet" />
-	<link rel="stylesheet" href="presentation.css">
+  <link href="google-code-prettify/src/prettify.css" type="text/css" rel="stylesheet" />
+  <link rel="stylesheet" href="presentation.css">
 
-	
+  
   <!-- Style theme. More available in /themes/style/ or create your own. -->
   <link rel="stylesheet" href="themes/style/granite.css">
   
@@ -32,354 +32,420 @@
 </head>
 <body class="deck-container">
 
-	<!-- Begin slides. Just make elements with a class of slide. -->
-	
-	<section class="slide">
-		<div class="title"></div>
-	</section>
+  <!-- Begin slides. Just make elements with a class of slide. -->
+  
+  <section class="slide">
+    <div class="title"></div>
+  </section>
 
-	<section class="slide">
-		<h2>Who am i?</h2>
-		<ul>
-			<li>Senior UI Engineer at Netflix (Sept 3)</li>
-			<li>Open source lover.</li>
-			<li>bittersweetryan</li>
+  <section class="slide">
+    <h2>Who am i?</h2>
+    <ul>
+      <li class="slide">Front End Engineer At Northwestern Mutual (for 3 more days)</li>
+      <li class="slide">Then Senior UI Engineer at Netflix.</li>
+      <li class="slide">I'll miss you guys :(</li>
+      <li class="slide">Open source lover.</li>
+      <li class="slide">bittersweetryan (twitter, github, stackoverflow, et al)</li>
         </ul>
-	</section>
+  </section>
 
-	<section class="slide">
-		<h2>Before we begin, a few questions</h2>
-		<p class="slide">Do you currently use Grunt (if so you may not need to answer the next ?'s)?</p>
-		<p class="slide">Do you test your JavaScript?</p>
-		<p class="slide">Do you combine and minify your JavaScript?</p>
-		<p class="slide">Do you do use pre-compiled languages like LESS or CoffeeScript (you hipster!)?</p>
-	</section>
+  <section class="slide">
+    <h2>Before we begin, a few questions</h2>
+    <p class="slide">Do you currently use Grunt (if so you may not need to answer the next ?'s)?</p>
+    <p class="slide">Do you test your JavaScript?</p>
+    <p class="slide">Do you combine and minify your JavaScript?</p>
+    <p class="slide">Do you do use pre-compiled languages like LESS or CoffeeScript (you hipster!)?</p>
+  </section>
 
-	<section class="slide">
-		<h2>Grunt is a JavaScript task runner.</h2>
-		<ul>
-			<li class="slide">Runs on NodeJS.</li>
-			<li class="slide">Relies heavily on plugins (installed via NPM).</li>
-			<li>
-				<ul>
-					<li class="slide">Unit Tests</li>
-					<li class="slide">CSS Pre-processors</li>
-					<li class="slide">JS/CSS Hinting</li>
-					<li class="slide">File Manipulation</li>
-					<li class="slide">File Watching</li>
-					<li class="slide">Much, much, more</li>
-				</ul>
-			</li>
-		</ul>
-	</section>
-		
+  <section class="slide">
+    <h2>Grunt is a JavaScript task runner.</h2>
+    <ul>
+      <li class="slide">Runs on NodeJS.</li>
+      <li class="slide">Relies heavily on plugins (installed via NPM).</li>
+      <li>
+        <ul>
+          <li class="slide">Unit Tests</li>
+          <li class="slide">CSS Pre-processors</li>
+          <li class="slide">JS/CSS Hinting</li>
+          <li class="slide">File Manipulation</li>
+          <li class="slide">File Watching</li>
+          <li class="slide">Much, much, more</li>
+        </ul>
+      </li>
+    </ul>
+  </section>
+    
     <section class="slide">
         <h1>Installing Grunt</h1>
     </section>
-		
-	<section class="slide">
-		<h2>Installing Grunt</h2>
-		<h3>There are <em>two</em> parts to Grunt:</h3>
-		<ul>
-			<li>grunt-cli (global command line interface)</li>
-			<li>grunt task runner (project local task runner)</li>
-		</ul>
-	</section>
-		
+    
+  <section class="slide">
+    <h2>Installing Grunt</h2>
+    <h3>There are <em>two</em> parts to Grunt:</h3>
+    <ul>
+      <li>grunt-cli (global command line interface)</li>
+      <li>grunt task runner (project local task runner)</li>
+    </ul>
+  </section>
+    
     <section class="slide">
         <h2>Installing the CLI</h2>
         <pre class="prettyprint">npm install -g grunt-cli</pre>
     </section>
-	
-	<section class="slide">
+  
+  <section class="slide">
         <h2>Installing Local Grunt</h2>
         <p>Local Grunt should be installed in each projects <em>root</em> folder.</p>
         <pre class="prettyprint">npm install -g grunt-cli</pre>    
-    </section>	
-	
-	<section class="slide">
-		<h2>Configure Grunt For Your Project</h2>
-		<ol>
-			<li>package.json</li>
-			<li>Install Plugins</li>
-			<li>Configure Grunt</li>
-		</ol>
-	</section>
-	
-	<section class="slide">
-	    <h2>package.json</h2>
-	    <ul>
-	        <li>Project Name</li>
-	        <li>Current Version</li>
-	        <li><strong>Dependencies (Grunt plugins)</strong></li>
-	    </ul>
-	</section>
-	
-	<section class="slide">
-	    <h2>package.json</h2>
-	    <pre class="prettyprint">{
-  "name": "ember-model",
-  "description": "A lightweight model library for Ember.js",
+    </section>  
+  
+  <section class="slide">
+    <h2>Configure Grunt For Your Project</h2>
+    <ol>
+      <li>package.json</li>
+      <li>Install Plugins</li>
+      <li>Configure Grunt</li>
+    </ol>
+  </section>
+  
+  <section class="slide">
+    <h1>package.json</h1>
+  </section>
+
+  <section class="slide">
+      <h2>package.json</h2>
+      <p>This is actually a Node.js file, however it is very useful inside of your Grunt configuration file.</p>
+      <ul>
+          <li>Project Name</li>
+          <li>Current Version</li>
+          <li><strong>Dependencies (Grunt plugins)</strong></li>
+      </ul>
+  </section>
+  
+  <section class="slide">
+      <h2>package.json example</h2>
+      <pre class="prettyprint">{
+  "name": "project-name", <-- no spaces
+  "version" : "0.2.1"
+  "description": "project description",
   "main": "Gruntfile.js",
   "devDependencies": {
-      ...
+      "grunt'": "grunt": "~0.4.1",
   },
-  "version" : "0.2.1"
 }</pre>
-	</section>
-	
-	<section class="slide">
-		<h2>Without plugins Grunt doesn't do much!</h2>
-		<p class="slide">Plugins are what Grunt uses to do "stuff"</p>
-		<p class="slide"><a href="http://www.gruntjs.com/plugins">www.gruntjs.com/plugins</a></p>
-		<p class="slide"><strong>"contrib"</strong> plugins are the "official" plugins.</p>
-	</section>
-	
-	<section class="slide">
-		<h2>Installing Plugins</h2>
-		<p>Plugins are installed with the <code class="prettyprint">npm install</code> command</p>
-		<pre class="prettyprint">npm install grunt-contrib-uglify --save-dev</pre>
-		<p class="slide"><code>--save-dev</code> modifies your package.json file</p>
-	</section>
-	
-	<section class="slide">
-		<h1>Configuring Grunt</h1>
-	</section>
-	
-	<section class="slide">
-		<h2>Each project needs a Grunt configuration.</h2>
-	</section>
+  </section>
+  
+  <section class="slide">
+    <h2>Without plugins Grunt doesn't do much!</h2>
+    <p class="slide">Plugins are what Grunt uses to do "stuff"</p>
+    <p class="slide"><a href="http://www.gruntjs.com/plugins">www.gruntjs.com/plugins</a></p>
+    <p class="slide"><strong>"contrib"</strong> plugins are the "official" plugins.</p>
+  </section>
+  
+  <section class="slide">
+    <h2>Installing Plugins</h2>
+    <p>Plugins are installed with the <code class="prettyprint">npm install</code> command</p>
+    <pre class="prettyprint">npm install grunt-contrib-uglify --save-dev</pre>
+    <p class="slide"><code>--save-dev</code> modifies your package.json file</p>
+  </section>
+  
+  <section class="slide">
+    <h1>Configuring Grunt</h1>
+  </section>
+  
+  <section class="slide">
+    <h2>Each project needs a Grunt configuration.</h2>
+    <ul>
+      <li>Named Gruntfile.js</li>
+      <li>Defines Tasks</li>
+      <li>Defines Targets</li>
+      <li>Loads Plugins</li>
+    </ul>
+  </section>
+  
+  <section class="slide">
+    <h2>Sample Gruntfile.js</h2>
+<pre class="prettyprint">module.exports = function( grunt ){
+  grunt.initConfig({
+    uglify : {
+      all : {
+        files : {
+          's-code.min.js' : [ 's-code.js', 's-code-page.js']
+        }
+      }
+    },
+    jasmine : {
+      min : {
+        src : [ 's-code.min.js'],
+        options : {
+          specs : [ '**test/spec/*.js' ]
+        }
+      }
+    },
+  });
+  //dynamically load tasks
+  require( 'matchdep' ).filterDev( 'grunt-*' ).forEach( grunt.loadNpmTasks );
+ 
+  grunt.registerTask( 'default', ['uglify', 'jasmine');
+};</pre>
+  </section>
+  
+  <section class="slide">
+    <h2>Bootstrapping your Gruntfile.js</h2>  
+    <pre class="prettyprint">module.exports = function( grunt ){ //this will tell node to load grunt
+  grunt.initConfig({ //pass in an configuration object for tasks
+    
+  grunt.loadNpmTasks( 'grunt-contrib-jasmine'); //tell grunt to load tasks
+});</pre>
+  </section>
 
-	<section class="slide">
-		<h2>package.json</h2>
-		<ul>
-			<li class="slide">Node.JS convention (not grunt)</li>
-			<li class="slide">Stores what plugins your project uses</li>
-			<li class="slide">Not <em>required</em> bug strongly <strong>recommended.</strong></li>
-		</ul>
-	</section>
-	
-	<section class="slide">
-		<h2>package.json</h2>
-		<pre class="prettyprint">{
-  "name": "Grunt_Presentation",
-  "version": "2013.7.25",
-  "devDependencies": {
-	"grunt": "~0.4.1",
-	"grunt-contrib-uglify": "~0.2.0",
-	"grunt-contrib-concat": "~0.1.3"
+  <section class="slide">
+    <h1>Configuring Tasks</h1>
+  </section>
+
+  <section class="slide">
+    <h2>Tasks</h2>
+    <ul>
+      <li>Each task is a property on the configuration object.</li>
+      <li>The property name of each task is the name of the plugin.</li>
+    </ul>
+  </section>
+  
+  <section class="slide">
+  <h2>Task Names</h2>
+<pre class="prettyprint">grunt.initConfig({
+  uglify : {
+    ...
+  },
+  jasmine : {
+    ...
+  },
+  jslint : {
+    ...
+  }
+});
+</pre>  
+  </section>
+
+  <section class="slide">
+    <h2>Targets</h2>
+    <ul>
+      <li>Each task can have one or many targets</li>
+      <li>Some tasks won't work <strong>WITHOUT</strong> targets</li>
+      <li>Some tasks won't work <strong>WITH</strong> targets</li>
+    </ul>
+  </section>
+
+  <section class="slide">
+  <h2>Targets</h2>
+  <p>The <code class="prettyprint">uglify</code> task below has two targets: <code class="prettyprint">dev</code> and <code class="prettyprint">prod</code></p>
+  <p>We'll talk more about the significance of these shortly.</p>
+<pre class="prettyprint">grunt.initConfig({
+  uglify : {
+    dev : {
+      ...
+    },
+    prod : {
+      ...
+    }
+  }
+});
+</pre>  
+  </section>
+
+<section class="slide">
+  <h1>Configuring Tasks</h1>
+</section>
+
+  <section class="slide">
+    <h2>Files</h2>  
+    <p>Most tasks use input and output files so it is baked right into Grunt.</p>
+    <p>There are many different ways to pass files into tasks!, choosing the right one will greatly reduce your stress.</p>
+    <p><strong>This knowledge is assumed, and is excluded from the docs of most plugins!</strong></p>
+  </section>
+
+  <section class="slide">
+    <h2>Compact Format</h2>
+    <p>Uses <code class="prettyprint">src</code> and <code class="prettyprint">dest</code> properties.</p>
+<pre class="prettyprint">concat: {
+  prod: {
+    src: ['src/bb.js', 'src/bbb.js'],
+    dest: 'dest/b.js',
   }
 }</pre>
-	<p>Remember <code>--save-dev</code> from a few slides back? That makes sure entries are added under the <code>"devDependencies"</code> node.</p>
-	</section>
-	
-	<section class="slide">
-		<h1>Tasks</h1>
-	</section>
-	
-	<section class="slide">
-		<h2>Tasks put the grunt in grunt.</h2>
-		<h3>put meme here</h3>
-	</section>
-	
-	<section class="slide">
-		<h2>Gruntfile.js</h2>
-		<h4>4 major pieces</h4>
-		<ul>
-			<li class="slide">Tasks</li>
-			<li class="slide">Targets</li>
-			<li class="slide">Files</li>
-			<li class="slide">Options</li>
-		</ul>
-	</section>
-	
-	<section class="slide">
-		<h2>Sample Gruntfile.js</h2>
-<pre class="prettyprint">module.exports = function( grunt ){
- 
-	var sourceFiles = [ 's-code.js', 's-code-page.js'];
- 
-	grunt.initConfig({
-		pkg : grunt.file.readJSON( 'package.json' ),
- 
-		uglify : {
-			all : {
-				files : {
-					's-code.min.<%= pkg.version %>.js' : sourceFiles
-				}
-			}
-		},
-		jasmine : {
-			unmodified : {
-				src : sourceFiles,
-				options : {
-					specs : [ '**test/spec/*.js' ]
-				}
-			},
-			min : {
-				src : [ 's-code.min.<% pkg.version %>.js' ],
-				options : {
-					specs : [ '**test/spec/*.js' ]
-				}
-			}
-		},
-		clean : {
-			build : {
-				src : [ 's-code.min**.js' ]
-			}
-		}
-	});
- 
-	//dynamically load tasks
-	require( 'matchdep' ).filterDev( 'grunt-*' ).forEach( grunt.loadNpmTasks );
- 
-	grunt.registerTask( 'default', ['jasmine:unmodified:build', 'clean', 'uglify', 'jasmine:min:build']);
-};</pre>
-	</section>
-	
-	<section class="slide">
-		<h2>Tasks</h2>
-		<ul>
-			<li class="slide">Tasks are direct children of the Gruntfile.js object.</li>
-			<li class="slide">They are always the same name as the plugin name. E.G. <code>concat</code> , <code>uglify</code></li>
-			<li class="slide">The plugins for your Tasks <strong>MUST</strong> be registred in your Gruntfile by calling <code>grunt.initTask( '&lt;taskname&gt;');</code></li>
-		</ul>
-	</section>
-	
-	<section class="slide">
-		<h2>Tasks</h2>
-<pre class="prettyprint">
-{
-	concat: {
-		...
-	}
-	uglify: {
-		...
-	},
-	//don't forget to load your plugins!
-	grunt.loadNpmTasks( 'concat' );
-	grunt.loadNpmTasks( 'uglify' );
-}
-</pre>
-	</section>
+  </section>
 
-	<section class="slide">
-		<h2>Custom Tasks</h2>
-<pre class="prettyprint">
-{
-	...
-	
-	grunt.registerTask( 'build', 
-		['concat', 'uglify' ] );
-		
-	...
-}
-</pre>
-	</section>
-		
-	<section class="slide">
-		<h2>Running Tasks</h2>
-		<h4>Run all</h4>
-<pre class="prettyprint">$ grunt</pre>
-		<h4>Run one</h4>
-<pre class="prettyprint">$ grunt concat</pre>        
-<pre class="prettyprint">$ grunt build</pre>        
-	</section>
+  <section class="slide">
+    <h2>Files Object Format</h2>
+    <p>Uses an object called<code class="prettyprint">files</code>.</p>
+    <p>The property <strong>name</strong> is the <strong>output</strong>. The property <strong>value</strong> is the <strong>input</strong>.</p>
+<pre class="prettyprint"> uglify: {
+  prod: {
+    files: {
+      'dest/a.js': ['src/aa.js', 'src/aaa.js'], //array of files
+      'dest/a1.js': 'src/aa1.js', //single file
+    },
+  }
+}</pre>
+  </section>  
 
-	<section class="slide">
-		<h1>Targets</h1>
-	</section>
+  <section class="slide">
+    <h2>Files Array Format</h2>
+    <p>Supports multiple src-dest file mappings per-target.</p>
+<pre class="prettyprint">concat: {
+  prod: {
+    files: [
+      {src: ['src/aa.js', 'src/aaa.js'], dest: 'dest/a.js'},
+      {src: ['src/aa1.js', 'src/aaa1.js'], dest: 'dest/a1.js'},
+    ]
+  }
+}</pre>
+  </section>
 
-	<section class="slide">
-		<h4>Targets are sub-configurations of tasks that can be "targeted" when running a task.</h4>
-<pre class="prettyprint">
-	{
-		copy : {
-			dev : {
-				//path to dev
-			},
-			staging : {
-				//path to staging
-			},
-			production: {
-				//path to prod
-			}
-		}
-	}
-</pre>
-<pre class="prettyprint">$ grunt copy:dev</pre>   
-	</section>
+  <section class="slide">
+    <h2>Filtering Files</h2>
+    <ul>
+      <li>
+        The "Compact" and "Files Array" formats (i.e. the ones that have <code class="prettyprint">src</code> and <code class="prettyprint">dest</code> properites also support additional options.
+      </li>
+      <li>
+        The <code class="prettyprint">filter</code> option can be very useful.
+      </li>
+      <li>
+        <code class="prettyprint">filter</code> takes either a function that returns a boolean, or a fs.Stats method name. 
+      </li>
+    </ul>
+  </section>
 
-	<section class="slide">
-		<h2>Configuring Tasks</h2>
-		<ul>
-			<li class="slide">Most Grunt plugins work with files so all tasks inherit a way to pass in source and destination files to them.</li>
-			<li class="slide">Tasks also have optional "options" that can be passed into them</li>
-		</ul>
-	</section>
+  <section class="slide">
+    <h2>Filter Example (using function)</h2>
+<pre class="prettyprint">files : [
+  {
+    src : {...},
+    dest : {...},
+    filter : function( src ){
+      return !(/node_modules/.test( src ));
+    }
+  }
+]</pre>
+  </section>
 
-	<section class="slide">
-		<h2>Configuring Files</h2>
-	</section>
-	
-	<section class="slide">
-		<h1>Questions?</h1>
-	</section>
-	
-	<section class="slide">
-		<h1>The End.</h1>
-	</section>
-	<!-- End slides. -->
-	
-	
-	<!-- Begin extension snippets. Add or remove as needed. -->
-	
-	<!-- deck.navigation snippet -->
-	<a href="#" class="deck-prev-link" title="Previous">&#8592;</a>
-	<a href="#" class="deck-next-link" title="Next">&#8594;</a>
-	
-	<!-- deck.status snippet -->
-	<p class="deck-status">
-		<span class="deck-status-current"></span>
-		/
-		<span class="deck-status-total"></span>
-	</p>
-	
-	<!-- deck.goto snippet -->
-	<form action="." method="get" class="goto-form">
-		<label for="goto-slide">Go to slide:</label>
-		<input type="text" name="slidenum" id="goto-slide" list="goto-datalist">
-		<datalist id="goto-datalist"></datalist>
-		<input type="submit" value="Go">
-	</form>
-	
-	<!-- deck.hash snippet -->
-	<a href="." title="Permalink to this slide" class="deck-permalink">#</a>
-	
-	<!-- End extension snippets. -->
-	
-	
-	<!-- Required JS files. -->
-	<script src="jquery-1.7.2.min.js"></script>
-	<script src="core/deck.core.js"></script>
-	
-	<!-- Extension JS files. Add or remove as needed. -->
-	<script src="core/deck.core.js"></script>
-	<script src="extensions/hash/deck.hash.js"></script>
-	<script src="extensions/menu/deck.menu.js"></script>
-	<script src="extensions/goto/deck.goto.js"></script>
-	<script src="extensions/status/deck.status.js"></script>
-	<script src="extensions/navigation/deck.navigation.js"></script>
-	<script src="extensions/scale/deck.scale.js"></script>
-	
-	<script type="text/javascript" src="google-code-prettify/src/prettify.js"></script>
-		
-	<!-- Initialize the deck. You can put this in an external file if desired. -->
-	<script>
-		$(function() {
-			prettyPrint();
-			$.deck('.slide');
-		});
-	</script>
+  <section class="slide">
+    <h2>Filter Example (using fs.Stats)</h2>
+<pre class="prettyprint">files : [
+  {
+    src : {...},
+    dest : {...},
+    filter : 'isFile'
+  }
+]</pre>
+  </section>
+  
+  <section class="slide">
+    <h1>Running Tasks</h1>
+  </section>
+  
+  <section class="slide">
+    <h2>grunt command</h2>
+    <ul>
+      <li>Tasks are run with the <code>grunt</code> command.</li>
+      <li>This will run all tasks and all targets for the "default" task</li>
+    </ul>
+    <pre class="prettyprint">bittersweetryan$ grunt</pre>
+  </section>
+  
+  <section class="slide">
+    <h2>Running a single task</h2>
+    <ul>
+      <li>Single tasks are run by adding the task name after the <code>grunt</code> command.</li>
+      <li>This will run every <code>target</code> for that task.</li>
+    </ul>
+    <pre class="prettyprint">bittersweetryan$ grunt uglify</pre>
+  </section>  
+
+  <section class="slide">
+    <h2>Running a single target</h2>
+    <p>To run only a single target, append the target name to the task with a :</p>
+    <pre class="prettyprint">bittersweetryan$ grunt uglify:dev</pre>
+  </section>
+
+  <section class="slide">
+    <h2>Custom Targets</h2>
+    <ul>
+      <li>You can also create custom targets to run tasks and targets, in a specific order</li>
+      <li>This is done with the <code>registerTask()</code> function.</li>
+      <li><code>registerTask</code> is usually don at the end of your module.exports function.</li>
+    </ul>
+  </section>
+
+  <section class="slide">
+    <h2>Custom Target Examples</h2>
+    <p>Don't run all tasks for <code>grunt</code> with no targets</p>
+    <pre class="prettyprint">grunt.registerTask('default',['handlebars','concat','uglify']);</pre> 
+  </section>
+
+  <section class="slide">
+    <h2>Passing options into the grunt command</h2>
+  </section>
+
+  <section class="slide">
+    <h1>Questions?</h1>
+  </section>
+  
+  <section class="slide">
+    <h1>The End.</h1>
+  </section>
+  <!-- End slides. -->
+  
+  
+  <!-- Begin extension snippets. Add or remove as needed. -->
+  
+  <!-- deck.navigation snippet -->
+  <a href="#" class="deck-prev-link" title="Previous">&#8592;</a>
+  <a href="#" class="deck-next-link" title="Next">&#8594;</a>
+  
+  <!-- deck.status snippet -->
+  <p class="deck-status">
+    <span class="deck-status-current"></span>
+    /
+    <span class="deck-status-total"></span>
+  </p>
+  
+  <!-- deck.goto snippet -->
+  <form action="." method="get" class="goto-form">
+    <label for="goto-slide">Go to slide:</label>
+    <input type="text" name="slidenum" id="goto-slide" list="goto-datalist">
+    <datalist id="goto-datalist"></datalist>
+    <input type="submit" value="Go">
+  </form>
+  
+  <!-- deck.hash snippet -->
+  <a href="." title="Permalink to this slide" class="deck-permalink">#</a>
+  
+  <!-- End extension snippets. -->
+  
+  
+  <!-- Required JS files. -->
+  <script src="jquery-1.7.2.min.js"></script>
+  <script src="core/deck.core.js"></script>
+  
+  <!-- Extension JS files. Add or remove as needed. -->
+  <script src="core/deck.core.js"></script>
+  <script src="extensions/hash/deck.hash.js"></script>
+  <script src="extensions/menu/deck.menu.js"></script>
+  <script src="extensions/goto/deck.goto.js"></script>
+  <script src="extensions/status/deck.status.js"></script>
+  <script src="extensions/navigation/deck.navigation.js"></script>
+  <script src="extensions/scale/deck.scale.js"></script>
+  
+  <script type="text/javascript" src="google-code-prettify/src/prettify.js"></script>
+    
+  <!-- Initialize the deck. You can put this in an external file if desired. -->
+  <script>
+    $(function() {
+      prettyPrint();
+      $.deck('.slide');
+    });
+  </script>
 </body>
 </html>
