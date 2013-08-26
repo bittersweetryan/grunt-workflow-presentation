@@ -356,6 +356,28 @@
   </section>
   
   <section class="slide">
+    <h2>This will run:</h2>
+    <pre>grunt.initConfig({
+  <strong>
+  uglify : {
+    dev : {
+      ...
+    },
+    prod : {
+      ...
+    }
+  },
+  concat: {
+    dev : {
+      ...
+    }
+  }
+  </strong>
+});
+    </pre>
+  </section>
+
+  <section class="slide">
     <h2>Running a single task</h2>
     <ul>
       <li>Single tasks are run by adding the task name after the <code>grunt</code> command.</li>
@@ -365,10 +387,54 @@
   </section>  
 
   <section class="slide">
+      <h2>This will run:</h2>
+      <pre>grunt.initConfig({
+  <strong>
+  uglify : {
+    dev : {
+      ...
+    },
+    prod : {
+      ...
+    }
+  },
+  </strong>
+  concat: {
+    dev : {
+      ...
+    }
+  }
+});
+      </pre>
+  </section>
+
+  <section class="slide">
     <h2>Running a single target</h2>
     <p>To run only a single target, append the target name to the task with a :</p>
     <pre class="prettyprint">bittersweetryan$ grunt uglify:dev</pre>
   </section>
+
+    <section class="slide">
+        <h2>This will run:</h2>
+        <pre>grunt.initConfig({
+    <strong>
+    uglify : {
+      dev : {
+        ...
+      },
+      </strong>
+      prod : {
+        ...
+      }
+    },
+    concat: {
+      dev : {
+        ...
+      }
+    }
+  });
+        </pre>
+    </section>
 
   <section class="slide">
     <h2>Custom Targets</h2>
