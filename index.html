@@ -35,7 +35,9 @@
   <!-- Begin slides. Just make elements with a class of slide. -->
   
   <section class="slide">
-    <div class="title"></div>
+    <div style="position:absolute; height: 100%; width: 100%" >
+      <div class="title"></div>  
+    </div>
   </section>
 
   <section class="slide">
@@ -51,9 +53,10 @@
 
   <section class="slide">
     <h2>Before we begin, a few questions</h2>
-    <p class="slide">Do you currently use Grunt (if so you may not need to answer the next ?'s)?</p>
+    <p class="slide">Do you currently use Grunt?</p>
     <p class="slide">Do you test your JavaScript?</p>
     <p class="slide">Do you combine and minify your JavaScript?</p>
+    <p class="slide">Do you lint your JavaScript?</p>
     <p class="slide">Do you do use pre-compiled languages like LESS or CoffeeScript (you hipster!)?</p>
   </section>
 
@@ -62,7 +65,6 @@
     <ul>
       <li class="slide">Runs on NodeJS.</li>
       <li class="slide">Relies heavily on plugins (installed via NPM).</li>
-      <li>
         <ul>
           <li class="slide">Unit Tests</li>
           <li class="slide">CSS Pre-processors</li>
@@ -96,7 +98,7 @@
   <section class="slide">
         <h2>Installing Local Grunt</h2>
         <p>Local Grunt should be installed in each projects <em>root</em> folder.</p>
-        <pre class="prettyprint">npm install -g grunt-cli</pre>    
+        <pre class="prettyprint">npm install grunt</pre>    
     </section>  
   
   <section class="slide">
@@ -114,7 +116,7 @@
 
   <section class="slide">
       <h2>package.json</h2>
-      <p>This is actually a Node.js file, however it is very useful inside of your Grunt configuration file.</p>
+      <p>This is actually a Node.js file, however it is very useful inside of your Grunt configuration file.  It includes:</p>
       <ul>
           <li>Project Name</li>
           <li>Current Version</li>
@@ -128,10 +130,9 @@
   "name": "project-name", <-- no spaces
   "version" : "0.2.1"
   "description": "project description",
-  "main": "Gruntfile.js",
   "devDependencies": {
       "grunt'": "grunt": "~0.4.1",
-  },
+  }
 }</pre>
   </section>
   
@@ -156,7 +157,7 @@
   <section class="slide">
     <h2>Each project needs a Grunt configuration.</h2>
     <ul>
-      <li>Named Gruntfile.js</li>
+      <li>Named <code>Gruntfile.js</code></li>
       <li>Defines Tasks</li>
       <li>Defines Targets</li>
       <li>Loads Plugins</li>
@@ -261,7 +262,7 @@
     <h2>Files</h2>  
     <p>Most tasks use input and output files so it is baked right into Grunt.</p>
     <p>There are many different ways to pass files into tasks!, choosing the right one will greatly reduce your stress.</p>
-    <p><strong>This knowledge is assumed, and is excluded from the docs of most plugins!</strong></p>
+    <p><strong>This knowledge is assumed, because of this it is excluded from most plugins documentation!</strong></p>
   </section>
 
   <section class="slide">
@@ -282,8 +283,8 @@
 <pre class="prettyprint"> uglify: {
   prod: {
     files: {
-      'dest/a.js': ['src/aa.js', 'src/aaa.js'], //array of files
-      'dest/a1.js': 'src/aa1.js', //single file
+      'dest/a.js': ['src/aa.js', 'src/aaa.js'],
+      'dest/a1.js': 'src/aa1.js',
     },
   }
 }</pre>
