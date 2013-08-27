@@ -59,6 +59,10 @@
     <p class="slide">Do you lint your JavaScript?</p>
     <p class="slide">Do you do use pre-compiled languages like LESS or CoffeeScript (you hipster!)?</p>
   </section>
+  
+  <section class="slide">
+    <h1>Enter Grunt</h1>
+  </section>
 
   <section class="slide">
     <h2>Grunt is a JavaScript task runner.</h2>
@@ -102,16 +106,16 @@
     </section>  
   
   <section class="slide">
+    <h1>Configuring Grunt</h1>
+  </section>
+
+  <section class="slide">
     <h2>Configure Grunt For Your Project</h2>
     <ol>
-      <li>package.json</li>
+      <li>Create package.json</li>
       <li>Install Plugins</li>
-      <li>Configure Grunt</li>
+      <li>Create Gruntfile.js</li>
     </ol>
-  </section>
-  
-  <section class="slide">
-    <h1>package.json</h1>
   </section>
 
   <section class="slide">
@@ -151,16 +155,16 @@
   </section>
   
   <section class="slide">
-    <h1>Configuring Grunt</h1>
+    <h1>Gruntfile.js</h1>
   </section>
   
   <section class="slide">
     <h2>Each project needs a Grunt configuration.</h2>
     <ul>
-      <li>Named <code>Gruntfile.js</code></li>
-      <li>Defines Tasks</li>
-      <li>Defines Targets</li>
-      <li>Loads Plugins</li>
+      <li class="slide">Named <code>Gruntfile.js</code></li>
+      <li class="slide">Defines Tasks</li>
+      <li class="slide">Defines Targets</li>
+      <li class="slide">Loads Plugins</li>
     </ul>
   </section>
   
@@ -184,24 +188,21 @@
       }
     },
   });
-  //dynamically load tasks
-  require( 'matchdep' ).filterDev( 'grunt-*' ).forEach( grunt.loadNpmTasks );
- 
-  grunt.registerTask( 'default', ['uglify', 'jasmine');
+  
+  grunt.loadNpmTasks( 'grunt-contrib-uglify');
+  grunt.loadNpmTasks( 'grunt-contrib-jasmine');
 };</pre>
   </section>
   
   <section class="slide">
     <h2>Bootstrapping your Gruntfile.js</h2>  
-    <pre class="prettyprint">module.exports = function( grunt ){ //this will tell node to load grunt
-  grunt.initConfig({ //pass in an configuration object for tasks
-    
-  grunt.loadNpmTasks( 'grunt-contrib-jasmine'); //tell grunt to load tasks
-});</pre>
-  </section>
+    <pre class="prettyprint">module.exports = function( grunt ){ //load grunt
+  grunt.initConfig({ 
+  
+  }); //configure tasks
 
-  <section class="slide">
-    <h1>Configuring Tasks</h1>
+  grunt.loadNpmTasks( 'grunt-contrib-jasmine'); //load tasks
+});</pre>
   </section>
 
   <section class="slide">
@@ -240,7 +241,7 @@
   <section class="slide">
   <h2>Targets</h2>
   <p>The <code class="prettyprint">uglify</code> task below has two targets: <code class="prettyprint">dev</code> and <code class="prettyprint">prod</code></p>
-  <p>We'll talk more about the significance of these shortly.</p>
+  <p>When running grunt you can run any or all of these targets.</p>
 <pre class="prettyprint">grunt.initConfig({
   uglify : {
     dev : {
@@ -446,13 +447,13 @@
   </section>
 
   <section class="slide">
-    <h2>Custom Target Examples</h2>
-    <p>When the<code>grunt</code> is with no tasks, only run specific tasks:</p>
+    <h2>Custom Default Target</h2>
+    <p>Override running all tasks when <code>grunt</code> is run with no targets.</p>
     <pre class="prettyprint">grunt.registerTask('default',['jasmine','concat','uglify']);</pre> 
   </section>
 
   <section class="slide">
-    <h2>Custom Target Examples</h2>
+    <h2>Custom Named Target</h2>
     <p>Only run <code>grunt</code> <code>:prod</code>targets:</p>
     <pre class="prettyprint">grunt.registerTask('default',['jasmine:prod','concat:prod','uglify:prod']);</pre> 
   </section>
