@@ -350,6 +350,23 @@
   }
 ]</pre>
   </section>
+
+  <section class="slide">
+    <h2>Reading From package.json</h2>
+    <pre class="prettyprint">
+    grunt.initConfig( {
+      pkg : grunt.file.readJSON( 'package.json' ),
+      
+     uglify : {
+          all : {
+            files : {
+              's-code.min.<%= pkg.version %>.js' : sourceFiles
+            }
+          }
+      }
+    })
+    </pre>
+  </section>
   
   <section class="slide">
     <h1>Running Tasks</h1>
