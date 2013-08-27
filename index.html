@@ -41,7 +41,7 @@
   </section>
 
   <section class="slide">
-    <h2>Who am i?</h2>
+    <h2>Who am I?</h2>
     <ul>
       <li class="slide">Front End Engineer At Northwestern Mutual (for 3 more days)</li>
       <li class="slide">Then Senior UI Engineer at Netflix.</li>
@@ -153,6 +153,15 @@
     <pre class="prettyprint">npm install grunt-contrib-uglify --save-dev</pre>
     <p class="slide"><code>--save-dev</code> modifies your package.json file</p>
   </section>
+
+  <section class="slide">
+    <h2>Watch Plugin</h2>
+    <p>I <strong>HIGHLY</strong> recommend the <code>grunt-contrib-watch</code> plugin.</p>
+    <ul>
+      <li>Runs tasks when files change.</li>
+      <li>Also includes live-reload to refresh your browser after tasks complete.</li>
+    </ul>
+  </section>
   
   <section class="slide">
     <h1>Gruntfile.js</h1>
@@ -201,7 +210,9 @@
   
   }); //configure tasks
 
-  grunt.loadNpmTasks( 'grunt-contrib-jasmine'); //load tasks
+  grunt.loadNpmTasks( 
+    'grunt-contrib-jasmine'
+  ); //load tasks
 });</pre>
   </section>
 
@@ -262,8 +273,8 @@
   <section class="slide">
     <h2>Files</h2>  
     <p>Most tasks use input and output files so it is baked right into Grunt.</p>
-    <p>There are many different ways to pass files into tasks!, choosing the right one will greatly reduce your stress.</p>
-    <p><strong>This knowledge is assumed, because of this it is excluded from most plugins documentation!</strong></p>
+    <p>There are many different ways to pass files into tasks! Choosing the right one will greatly reduce your stress.</p>
+    <p><strong>This knowledge is assumed, it is excluded from most plugins documentation!</strong></p>
   </section>
 
   <section class="slide">
@@ -279,8 +290,8 @@
 
   <section class="slide">
     <h2>Files Object Format</h2>
-    <p>Uses an object called<code class="prettyprint">files</code>.</p>
-    <p>The property <strong>name</strong> is the <strong>output</strong>. The property <strong>value</strong> is the <strong>input</strong>.</p>
+    <p>Uses an object named <code class="prettyprint">files</code>.</p>
+    <p>The property <strong>name</strong> is the <strong>output file name</strong>. The property <strong>value</strong> is the <strong>input</strong> files.</p>
 <pre class="prettyprint"> uglify: {
   prod: {
     files: {
@@ -309,9 +320,6 @@
     <ul>
       <li>
         The "Compact" and "Files Array" formats (i.e. the ones that have <code class="prettyprint">src</code> and <code class="prettyprint">dest</code> properites also support additional options.
-      </li>
-      <li>
-        The <code class="prettyprint">filter</code> option can be very useful.
       </li>
       <li>
         <code class="prettyprint">filter</code> takes either a function that returns a boolean, or a fs.Stats method name. 
@@ -449,24 +457,31 @@
   <section class="slide">
     <h2>Custom Default Target</h2>
     <p>Override running all tasks when <code>grunt</code> is run with no targets.</p>
-    <pre class="prettyprint">grunt.registerTask('default',['jasmine','concat','uglify']);</pre> 
+    <pre class="prettyprint">grunt.registerTask(
+  'default',['jasmine','concat','uglify']
+);</pre> 
   </section>
 
   <section class="slide">
     <h2>Custom Named Target</h2>
     <p>Only run <code>grunt</code> <code>:prod</code>targets:</p>
-    <pre class="prettyprint">grunt.registerTask('default',['jasmine:prod','concat:prod','uglify:prod']);</pre> 
+    <pre class="prettyprint">grunt.registerTask(
+  'prod',['jasmine:prod','concat:prod','uglify:prod']
+);</pre> 
+
+<pre class="prettyprint">bittersweetryan$ grunt prod</pre>
   </section>
 
   <section class="slide">
     <h2>Passing options into grunt</h2>
     <p>Lets say we wanted to be able to dynamically pass an environment target into the last example.  We can do that with command line arguments.</p>
+<pre class="prettyprint">grunt --varname=value</pre>
+
 <pre class="prettyprint">var env = grunt.option( 'env' );
 var tasks = [ 'jasmine', 'concat', 'uglify' ];
 
 grunt.registerTask('default', tasks.map( function( task ){ return task + ':' + env; } ) );
 </pre>
-
 <pre class="prettyprint">grunt --env=prod</pre>
   </section>
 
@@ -475,7 +490,11 @@ grunt.registerTask('default', tasks.map( function( task ){ return task + ':' + e
     <ul>
       <li>It's just JavaScript! Use variables &amp; functions to DRY</li>
       <li>Dynamically load plugins
-        <div><code class="prettyprint">require( 'matchdep' ).filterDev( 'grunt-*' ).forEach( grunt.loadNpmTasks );</code></div>
+        <div><pre class="prettyprint" style="display:block">npm install matchdep --save-dev</pre>
+        <p>Then instead of <code>grunt.loadNpmTasks( taskname)</code> do:</p>
+        <pre style="display:block" class="prettyprint">require( 'matchdep' )
+  .filterDev( 'grunt-*' )
+  .forEach( grunt.loadNpmTasks );</pre>
       </li>
       <li>Read &amp; re-read the 'Configuring Tasks' section of the Grunt website</li>
       </ul>
